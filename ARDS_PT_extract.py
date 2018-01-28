@@ -26,11 +26,11 @@ class ReduceCHARTEVENT(ItemIDSearch):
          self.reduced_CH = pd.concat(reduced_CH)
 
      def Dump_Pickle(self, X, X_name):
-         pickle.dump(X, open('X_name', 'wb'))
+         pickle.dump(X, open(X_name, 'wb'))
 
      def Execute(self):
          self.Reduce_CH_by_Berlin()
-         self.Dump_Pickle(self.reduced_CH,'reduced_CH.pkl')
+         self.Dump_Pickle(self.reduced_CH,'PKL/reduced_CH.pkl')
 
 
 
