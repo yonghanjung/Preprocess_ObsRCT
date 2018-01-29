@@ -6,6 +6,8 @@
 
 As the size of CHARTEVENT is massive, we don't want to call _CHARTEVENTS_ everytime for conducting analysis. Motivated by the fact that _FiO2_ and _PaO2_ are two essential variables in defining ARDS / ALI, _CHARTEVENT_ is reduced by containing only rows with _FiO2_ and _PaO2_.
 
+By searching *reduced_CHARTEVENT* (denote *reduced_CH*), we can search patients more efficiently.
+
 #### Action  
 
 1. Run *ReduceCHARTEVENT.py*. Then *reduced_CH.pkl* file will be stored in *PKL* folder. 
@@ -16,19 +18,15 @@ As the size of CHARTEVENT is massive, we don't want to call _CHARTEVENTS_ everyt
 
 Inclusion criteria is following: 
 
-* _PaO2 / FiO2_ < 300, which is a definition of ARDS. 
+* **Job 1** _PaO2 / FiO2_ < 300, which is a definition of ARDS. 
   * For some time index $t$ and $s$, we compute $PaO2_t / FiO2_s$ where $|t-s | < h$, where $h$ is a predefined width of observing window.
-* Patients with Mechanical ventilated after the ARDS event. 
+* **Job 2** Patients with Mechanical ventilated after the ARDS event. 
   * Refer the [Link](https://github.com/MIT-LCP/mimic-code/blob/master/concepts/durations/ventilation-durations.sql) for rough logic to extract Mechanical ventilated patients in MIMIC.
   * Ask Jenna's help to run the code at [Link](https://github.com/MIT-LCP/mimic-code/blob/master/concepts/durations/ventilation-durations.sql). Let *Ventilated.csv* as such data. 
-* By taking intersect set of ARDS event time and *Ventilated.csv*, we collect patients such that 
+* **Job 3 = Job 1 $\cap$ Job 2**   By taking intersect set of ARDS event time and *Ventilated.csv*, we collect patients such that 
   * ARDS event happened at some moment $t$; and 
   * ventilated around $t$. 
-* Let's denote such data as *ARDS_PT.csv*
-
-
-
-#### Action 
+  * Let's denote such data as *ARDS_PT.csv*
 
 
 

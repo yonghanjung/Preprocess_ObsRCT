@@ -4,6 +4,14 @@ import pandas as pd
 import pickle
 from ItemID import ItemIDSearch 
 
+'''
+Reduce CHARTEVENTS.csv by containing only necessary itemid (Berlin score). 
+The output only contains the itemid of (190, 779, 2981) which are related to computing 
+Berlin score. 
+
+We can be more efficient by searching patients with containing Berlin score related biomarkers.  
+'''
+
 class ReduceCHARTEVENT(ItemIDSearch):
      def __init__(self):
          super().__init__()
