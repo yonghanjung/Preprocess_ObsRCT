@@ -1,3 +1,9 @@
 *.pkl
-OLD
+OLD/raw_data
+OLD/Preprocessed_result
 *.zip
+*.csv
+*.xlsx
+*.xls
+__init__.py
+.idea
