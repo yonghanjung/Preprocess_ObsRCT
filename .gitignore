@@ -1,9 +1,13 @@
 *.pkl
-OLD/raw_data
-OLD/Preprocessed_result
 *.zip
 *.csv
 *.xlsx
 *.xls
+*.txt
+
+OLD/raw_data
+OLD/Preprocessed_result
+
 __init__.py
 .idea
+.gitignore
