@@ -7,7 +7,8 @@ import datetime
 class ARDS_Extract(object):
     def __init__(self):
         ### Predefined variable ###
-        self.h = 1
+        ### Window days are days w such that  |s-t| <= w for PaO2_s and SpO2_t
+        self.window_days = 1
 
         ### Necessary Item IDs ###
         self.key_PEEP = [505, 506]
@@ -38,27 +39,32 @@ class ARDS_Extract(object):
         :param subject_id: subject id
         :return: True means no heart failure ==> ARDS
         '''
-        self.subject_CH = self.reduced_CH[self.reduced_CH['SUBJECT_ID'] == subject_id]
-        subject_ICD9 = self.subject_CH['ICD9_CODE']
+        subject_CH = self.reduced_CH[self.reduced_CH['SUBJECT_ID'] == subject_id]
+        subject_ICD9 = subject_CH['ICD9_CODE']
         if '4280' in list(subject_ICD9):
             return False
         else:
             return True
 
     def Admittime_extract(self, subject_id):
+        '''
+        Extract admission time of subject
+        :param subject_id:
+        :return: sorted array of subject admission times.
+        '''
         subject_ADMITTIME= self.ADMISSIONS['ADMITTIME'][self.ADMISSIONS['SUBJECT_ID'] == subject_id]
         return sorted(pd.to_datetime(subject_ADMITTIME))
 
 
-    def Admittime_correction(self, admittimes, subject_id):
+    def Admittime_correction(self, subject_admittimes, subject_CH):
         '''
         Match years of chartevent and admission time 
         :param admittime: PT's admission time in ADMISSION (sorted and encoded as array)
         :param subject_id: subject id 
-        :return: 
+        :return: new admissiontime array, matchined with charttime.
         '''
-        min_admittime = admittimes[0]
-        subject_CH_time = pd.to_datetime(self.subject_CH['CHARTTIME'])
+        min_admittime = subject_admittimes[0]
+        subject_CH_time = pd.to_datetime(subject_CH['CHARTTIME'])
         try:
             min_charttime = min(subject_CH_time)
         except:
@@ -73,17 +79,32 @@ class ARDS_Extract(object):
             # Matching charttime and admission time
             # by replacing admission time to charttime.
             if min_admittime > min_charttime: ##
-                for a in admittimes:
+                for a in subject_admittimes:
                     a = a.replace(year=a.year - 100)
                     new_admittimes.append(a)
             else:
-                for a in admittimes:
+                for a in subject_admittimes:
                     a = a.replace(year=a.year + 100)
                     new_admittimes.append(a)
             min_admittime = min(new_admittimes)
 
-        admittimes = new_admittimes
-        return admittimes
+        subject_admittimes = new_admittimes
+        return subject_admittimes
+
+    def ARDS_marker_in_Window(self, subject_admittimes, subject_CH):
+        '''
+
+        :param subject_admittimes: Admittime with matched years to chartevent
+        :return:
+        '''
+
+        subject_admittimes_end = np.array(subject_admittimes) + \
+                                 datetime.timedelta(days = self.window_days)
+
+        # for a_start, a_end in zip(subject_admittimes, subject_admittimes_end):
+        #     mask = (subjec>= admittime) & (chart_time <= admittime_end)
+
+
 
 
 
