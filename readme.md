@@ -20,6 +20,7 @@ Inclusion criteria is following:
 
 * **Job 1** _PaO2 / FiO2_ < 300, which is a definition of ARDS. 
   * For some time index $t$ and $s$, we compute $PaO2_t / FiO2_s$ where $|t-s | < h$, where $h$ is a predefined width of observing window.
+  * Patients with ARDS satisfying this criterion is identified by running *ARDS_Extract.py*. The output, a list of patients, is stored as *ARDS_PT.pkl* in *PKL* folder. 
 * **Job 2** Patients with Mechanical ventilated after the ARDS event. 
   * As a prerequisite, run [ventilation-duration.sql](https://github.com/MIT-LCP/mimic-code/blob/master/concepts/durations/ventilation-durations.sql) to obtain patients' ventilation duration information.  Call the output as *ventilation-duration.csv*
   * Identify patients who have been ventilated. 
@@ -27,6 +28,12 @@ Inclusion criteria is following:
   * ARDS event happened at some moment $t$; and 
   * ventilated around $t$. 
   * Let's denote such data as *ARDS_PT.csv*
+
+
+
+#### Action
+
+1. Run *ARDS_Extract.py* to obtain *PKL/ARDS_PT.pkl*.
 
 
 
