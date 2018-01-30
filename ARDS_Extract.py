@@ -88,7 +88,7 @@ class ARDS_Extract(object):
                     new_admittimes.append(a)
             else:
                 for a in subject_admittimes:
-                    if abs(a.year < min_charttime.year) >= 100:
+                    if abs(a.year - min_charttime.year) >= 100:
                         a = a.replace(year=a.year + 100)
                         new_admittimes.append(a)
                     else:
@@ -164,6 +164,7 @@ class ARDS_Extract(object):
 
         for subject_id in self.SUBJECT_ID:
             print(round(idx / len(self.SUBJECT_ID), 3), subject_id)
+            idx += 1 
             if self.TF_HeartFailure(subject_id) == False:
                 continue
             else:
@@ -185,6 +186,7 @@ class ARDS_Extract(object):
 
 ards = ARDS_Extract()
 ARDS_PT = ards.Execute()
+pickle.dump(ARDS_PT,open('PKL/ARDS_PT.pkl','wb'))
 #
 # subject_id = 256
 # subject_CH = ards.reduced_CH[ards.reduced_CH['SUBJECT_ID'] == subject_id]
