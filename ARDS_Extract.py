@@ -9,6 +9,7 @@ class ARDS_Extract(object):
         ### Predefined variable ###
         ### Window days are days w such that  |s-t| <= w for PaO2_s and SpO2_t
         self.window_days = 1
+        self.window_hour_p_f = 2
 
         ### Necessary Item IDs ###
         self.key_PEEP = [505, 506]
@@ -31,6 +32,8 @@ class ARDS_Extract(object):
             raise Exception(" There is no 'reduced_CH.pkl' file! ")
 
         self.ADMISSIONS = pd.read_csv('OLD/raw_data/ADMISSIONS.csv')
+        self.DIAGNOSIS = pd.read_csv('OLD/raw_data/DIAGNOSES_ICD.csv')
+        self.SUBJECT_ID = np.unique(self.ADMISSIONS['SUBJECT_ID'])
 
     def TF_HeartFailure(self, subject_id):
         '''
@@ -39,8 +42,8 @@ class ARDS_Extract(object):
         :param subject_id: subject id
         :return: True means no heart failure ==> ARDS
         '''
-        subject_CH = self.reduced_CH[self.reduced_CH['SUBJECT_ID'] == subject_id]
-        subject_ICD9 = subject_CH['ICD9_CODE']
+        subject_diagnosis = self.DIAGNOSIS[self.DIAGNOSIS['SUBJECT_ID'] == subject_id]
+        subject_ICD9 = subject_diagnosis['ICD9_CODE']
         if '4280' in list(subject_ICD9):
             return False
         else:
@@ -68,25 +71,31 @@ class ARDS_Extract(object):
         try:
             min_charttime = min(subject_CH_time)
         except:
-            print(subject_CH_time)
+            print(subject_CH)
             raise Exception('Error in taking min of subject_CH_time')
 
-        new_admittimes = []
+
         # If there are 100 yrs differences b/w earlist chart event time and initial admission,
         # which is not making any sense, implying neccesity in correcing year encoding
 
         while( abs(min_charttime.year - min_admittime.year) >= 100 ):
             # Matching charttime and admission time
             # by replacing admission time to charttime.
+            new_admittimes = []
             if min_admittime > min_charttime: ##
                 for a in subject_admittimes:
                     a = a.replace(year=a.year - 100)
                     new_admittimes.append(a)
             else:
                 for a in subject_admittimes:
-                    a = a.replace(year=a.year + 100)
-                    new_admittimes.append(a)
+                    if abs(a.year < min_charttime.year) >= 100:
+                        a = a.replace(year=a.year + 100)
+                        new_admittimes.append(a)
+                    else:
+                        new_admittimes.append(a)
+
             min_admittime = min(new_admittimes)
+            subject_admittimes = new_admittimes
 
         subject_admittimes = new_admittimes
         return subject_admittimes
@@ -100,9 +109,90 @@ class ARDS_Extract(object):
 
         subject_admittimes_end = np.array(subject_admittimes) + \
                                  datetime.timedelta(days = self.window_days)
+        chart_time = pd.to_datetime(subject_CH['CHARTTIME'])
+        subject_ARDS_TF = False
 
-        # for a_start, a_end in zip(subject_admittimes, subject_admittimes_end):
-        #     mask = (subjec>= admittime) & (chart_time <= admittime_end)
+        for a_start, a_end in zip(subject_admittimes, subject_admittimes_end):
+            # This mask is covering all the chartevent of subject
+            # happened within the interval (a_start, a_end)
+            mask = (chart_time >= a_start) & (chart_time <= a_end)
+            subject_CH_a = subject_CH.loc[mask]
+            subject_CH_a = subject_CH_a.sort_index(by=['CHARTTIME'])
+
+            subject_Berlin= []
+
+            # If there is no chartevents within the interval,
+            # move on to the next interval
+            if len(subject_CH_a) == 0:
+                continue
+
+            # Otherwise
+            else:
+                subject_CH_a_FiO2 = subject_CH_a[subject_CH_a['ITEMID'].isin(self.key_FiO2)]
+                subject_CH_a_PaO2 = subject_CH_a[subject_CH_a['ITEMID'].isin(self.key_PaO2)]
+
+                if len(subject_CH_a_PaO2) == 0 or len(subject_CH_a_PaO2) == 0:
+                    continue
+                else:
+                    subject_FiO2 = list(pd.to_numeric( subject_CH_a_FiO2['VALUE'] ))
+                    subject_PaO2 = list(pd.to_numeric( subject_CH_a_PaO2['VALUE'] ))
+                    subject_Ftime = list(pd.to_datetime( subject_CH_a_FiO2['CHARTTIME'] ))
+                    subject_Ptime = list(pd.to_datetime( subject_CH_a_PaO2['CHARTTIME'] ))
+
+                    for f in range(len(subject_Ftime)):
+                        ftime = subject_Ftime[f]
+                        for p in range(len(subject_Ptime)):
+                            ptime = subject_Ptime[p]
+
+                            if abs(ftime.value - ptime.value)/(10**9 * 60 * 60) > self.window_hour_p_f:
+                                continue
+                            else:
+                                fio2 = subject_FiO2[f]
+                                pao2 = subject_PaO2[p]
+                                berlin = pao2 / (fio2 + 1e-6)
+                                if berlin > 300:
+                                    continue
+                                else:
+                                    subject_ARDS_TF = True
+                                    break
+
+        return subject_ARDS_TF
+
+    def Execute(self):
+        ARDS_PT = []
+        idx = 1
+
+        for subject_id in self.SUBJECT_ID:
+            print(round(idx / len(self.SUBJECT_ID), 3), subject_id)
+            if self.TF_HeartFailure(subject_id) == False:
+                continue
+            else:
+                subject_CH = self.reduced_CH[self.reduced_CH['SUBJECT_ID'] == subject_id]
+                if len(subject_CH) == 0:
+                    continue
+                else:
+                    subject_admittimes = self.Admittime_extract(subject_id)
+                    subject_admittimes = self.Admittime_correction(subject_admittimes,subject_CH)
+                    subject_ards = self.ARDS_marker_in_Window(subject_admittimes,subject_CH)
+
+                    if subject_ards == False:
+                        continue
+                    else:
+                        ARDS_PT.append(subject_id)
+        return ARDS_PT
+
+##### MAIN #####
+
+ards = ARDS_Extract()
+ARDS_PT = ards.Execute()
+#
+# subject_id = 256
+# subject_CH = ards.reduced_CH[ards.reduced_CH['SUBJECT_ID'] == subject_id]
+# subject_admittimes = ards.Admittime_extract(subject_id)
+# subject_admittimes = ards.Admittime_correction(subject_admittimes,subject_CH)
+# #
+# #
+
 
 
 

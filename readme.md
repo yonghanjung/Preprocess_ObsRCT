@@ -21,16 +21,12 @@ Inclusion criteria is following:
 * **Job 1** _PaO2 / FiO2_ < 300, which is a definition of ARDS. 
   * For some time index $t$ and $s$, we compute $PaO2_t / FiO2_s$ where $|t-s | < h$, where $h$ is a predefined width of observing window.
 * **Job 2** Patients with Mechanical ventilated after the ARDS event. 
-  * Refer the [Link](https://github.com/MIT-LCP/mimic-code/blob/master/concepts/durations/ventilation-durations.sql) for rough logic to extract Mechanical ventilated patients in MIMIC.
-  * Ask Jenna's help to run the code at [Link](https://github.com/MIT-LCP/mimic-code/blob/master/concepts/durations/ventilation-durations.sql). Let *Ventilated.csv* as such data. 
-* **Job 3 = Job 1 $\cap$ Job 2**   By taking intersect set of ARDS event time and *Ventilated.csv*, we collect patients such that 
+  * As a prerequisite, run [ventilation-duration.sql](https://github.com/MIT-LCP/mimic-code/blob/master/concepts/durations/ventilation-durations.sql) to obtain patients' ventilation duration information.  Call the output as *ventilation-duration.csv*
+  * Identify patients who have been ventilated. 
+* **Job 3 = Job 1 $\cap$ Job 2**   By taking intersect set of ARDS event time and *ventilation-duration.csv*, we collect patients such that 
   * ARDS event happened at some moment $t$; and 
   * ventilated around $t$. 
   * Let's denote such data as *ARDS_PT.csv*
-
-
-
-
 
 
 
