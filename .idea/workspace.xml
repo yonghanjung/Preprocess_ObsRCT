@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c744ed6a-db43-4287-8968-cfa08a62b0c9" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SQL_ALT/apsii.sql" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ARDS_Extract.py" afterPath="$PROJECT_DIR$/ARDS_Extract.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,72 +15,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="gcs-first-day.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SQL_ALT/gcs-first-day.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="17" column="50" lean-forward="false" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="labs-first-day.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SQL_ALT/labs-first-day.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ventilation-durations.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SQL_ALT/ventilation-durations.sql">
+      <file leaf-file-name="ARDS_Extract.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ARDS_Extract.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="320">
-              <caret line="16" column="33" lean-forward="false" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="apsiii.sql" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SQL_ALT/apsiii.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="41" column="27" lean-forward="false" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="blood-gas-first-day-arterial.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SQL_ALT/blood-gas-first-day-arterial.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="1" column="45" lean-forward="false" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="echo-data.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SQL_ALT/echo-data.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="4" column="29" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vitals-first-day.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SQL_ALT/vitals-first-day.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="35" />
-              <folding />
+              <caret line="192" column="0" lean-forward="false" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#125#7354#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,8 +45,8 @@
       <find>l</find>
       <find>from</find>
       <find>FROM</find>
-      <find>JOIN</find>
       <find>join</find>
+      <find>JOIN</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -111,7 +55,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Subject_extract.py" />
         <option value="$PROJECT_DIR$/Demographics.py" />
         <option value="$PROJECT_DIR$/CHARTEVENT_ARDS.py" />
         <option value="$PROJECT_DIR$/MV_extact.py" />
@@ -143,7 +86,6 @@
         <option value="$PROJECT_DIR$/ARDS_PT_extract.py" />
         <option value="$PROJECT_DIR$/ItemID.py" />
         <option value="$PROJECT_DIR$/ReduceCHARTEVENT.py" />
-        <option value="$PROJECT_DIR$/ARDS_Extract.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/PKL/readme.md" />
         <option value="$PROJECT_DIR$/SQL/apsii.sql" />
@@ -162,6 +104,8 @@
         <option value="$PROJECT_DIR$/SQL_ALT/echo-data.sql" />
         <option value="$PROJECT_DIR$/SQL_ALT/ventilation-durations.sql" />
         <option value="$PROJECT_DIR$/SQL_ALT/apsii.sql" />
+        <option value="$PROJECT_DIR$/demo.py" />
+        <option value="$PROJECT_DIR$/ARDS_Extract.py" />
       </list>
     </option>
   </component>
@@ -206,16 +150,6 @@
               <item name="Preprocess_ObsRCT" type="462c0819:PsiDirectoryNode" />
               <item name="OLD" type="462c0819:PsiDirectoryNode" />
               <item name="raw_data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Preprocess_ObsRCT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Preprocess_ObsRCT" type="462c0819:PsiDirectoryNode" />
-              <item name="SQL" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Preprocess_ObsRCT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Preprocess_ObsRCT" type="462c0819:PsiDirectoryNode" />
-              <item name="SQL_ALT" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -364,13 +298,13 @@
     <frame x="47" y="23" width="1393" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.2" sideWeight="0.49464667" order="2" side_tool="false" content_ui="combo" x="1055" y="42" width="288" height="577" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.2" sideWeight="0.49464667" order="2" side_tool="false" content_ui="combo" x="2225" y="132" width="288" height="577" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="1.0" sideWeight="0.50535333" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.4975018" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5276382" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34673366" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -394,7 +328,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ARDS_APACHE.py" />
     <entry file="file://$PROJECT_DIR$/ARDS_SUBJECT_ID_NEW" />
     <entry file="file://$PROJECT_DIR$/ARDS_CRS.py" />
     <entry file="file://$PROJECT_DIR$/ARDS_CH.py" />
@@ -515,16 +448,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ARDS_Extract.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3840">
-          <caret line="192" column="0" lean-forward="true" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SQL/apsii.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="359">
@@ -636,18 +559,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SQL_ALT/vitals-first-day.sql">
+    <entry file="file://$PROJECT_DIR$/SQL_ALT/apsiii.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="35" />
+        <state relative-caret-position="-77">
+          <caret line="133" column="15" lean-forward="true" selection-start-line="133" selection-start-column="15" selection-end-line="133" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SQL_ALT/gcs-first-day.sql">
+    <entry file="file://$PROJECT_DIR$/SQL_ALT/ventilation-durations.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="50" lean-forward="false" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
+        <state relative-caret-position="107">
+          <caret line="16" column="33" lean-forward="false" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -656,6 +579,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQL_ALT/gcs-first-day.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="17" column="50" lean-forward="false" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -676,19 +607,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SQL_ALT/ventilation-durations.sql">
+    <entry file="file://$PROJECT_DIR$/SQL_ALT/vitals-first-day.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="33" lean-forward="false" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="33" />
+        <state relative-caret-position="60">
+          <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SQL_ALT/apsiii.sql">
+    <entry file="file://$PROJECT_DIR$/demo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="41" column="27" lean-forward="false" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="27" />
-          <folding />
+        <state relative-caret-position="140">
+          <caret line="7" column="51" lean-forward="true" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ARDS_Extract.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="192" column="0" lean-forward="false" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#125#7354#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

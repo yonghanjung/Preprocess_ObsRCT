@@ -4,7 +4,7 @@ import pickle
 import dateutil
 import datetime
 
-class ARDS_Extract(object):
+class ARDS_Extract_Berlin(object):
     def __init__(self):
         ### Predefined variable ###
         ### Window days are days w such that  |s-t| <= w for PaO2_s and SpO2_t
@@ -182,11 +182,22 @@ class ARDS_Extract(object):
                         ARDS_PT.append(subject_id)
         return ARDS_PT
 
+class MV_PT(object):
+    def __init__(self, ARDS_PT_BERLIN):
+        self.ARDS_PT = ARDS_PT_BERLIN
+
+        VENT = pd.read_csv('ventsettings.csv')
+        self.VENT = VENT[pd.isnull(VENT['icustay_id']) == False]
+
+        self.ICUSTAY = pd.read_csv('ICUSTAYS.csv')
+
+
+
 ##### MAIN #####
 
-ards = ARDS_Extract()
-ARDS_PT = ards.Execute()
-pickle.dump(ARDS_PT,open('PKL/ARDS_PT.pkl','wb'))
+berlin = ARDS_Extract_Berlin()
+ARDS_PT_BERLIN = berlin.Execute()
+# pickle.dump(ARDS_PT_BERLIN,open('PKL/ARDS_PT.pkl','wb'))
 
 
 
