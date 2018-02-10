@@ -100,11 +100,13 @@ class ARDS_Extract_Berlin(object):
         subject_admittimes = new_admittimes
         return subject_admittimes
 
+    def hour_difference(self,time_obj1, time_obj2):
+        return abs(time_obj1.value - time_obj2.value)/(10**9 * 60 * 60)
+
     def ARDS_marker_in_Window(self, subject_admittimes, subject_CH):
         '''
-
         :param subject_admittimes: Admittime with matched years to chartevent
-        :return:
+        :return: Whether or NOT a patient is in ARDS.
         '''
 
         subject_admittimes_end = np.array(subject_admittimes) + \
@@ -128,27 +130,42 @@ class ARDS_Extract_Berlin(object):
 
             # Otherwise
             else:
+                # Pick FiO2 and PaO2
                 subject_CH_a_FiO2 = subject_CH_a[subject_CH_a['ITEMID'].isin(self.key_FiO2)]
                 subject_CH_a_PaO2 = subject_CH_a[subject_CH_a['ITEMID'].isin(self.key_PaO2)]
 
+                # If patients have no info about FiO2 or PaO2, skip the patients
                 if len(subject_CH_a_PaO2) == 0 or len(subject_CH_a_PaO2) == 0:
                     continue
+
+                # Otherwise
                 else:
+                    # List of FiO2 and PaO2 value
                     subject_FiO2 = list(pd.to_numeric( subject_CH_a_FiO2['VALUE'] ))
                     subject_PaO2 = list(pd.to_numeric( subject_CH_a_PaO2['VALUE'] ))
+
+                    # List of FiO2 and PaO2 timing
                     subject_Ftime = list(pd.to_datetime( subject_CH_a_FiO2['CHARTTIME'] ))
                     subject_Ptime = list(pd.to_datetime( subject_CH_a_PaO2['CHARTTIME'] ))
 
+                    # For each FiO2 measured time
                     for f in range(len(subject_Ftime)):
                         ftime = subject_Ftime[f]
+
+                        # For each PaO2 measured time
                         for p in range(len(subject_Ptime)):
                             ptime = subject_Ptime[p]
 
-                            if abs(ftime.value - ptime.value)/(10**9 * 60 * 60) > self.window_hour_p_f:
+                            # Takes two measurements within window_hour (2hour)
+                            if self.hour_difference(ftime, ptime) > self.window_hour_p_f:
                                 continue
                             else:
+
+                                # Among PaO2 value and FiO2 value within two hours,
                                 fio2 = subject_FiO2[f]
                                 pao2 = subject_PaO2[p]
+
+                                # If Berlin score less than 300, then TRUE!
                                 berlin = pao2 / (fio2 + 1e-6)
                                 if berlin > 300:
                                     continue
@@ -191,13 +208,15 @@ class MV_PT(object):
 
         self.ICUSTAY = pd.read_csv('ICUSTAYS.csv')
 
+def main():
+    berlin = ARDS_Extract_Berlin()
+    ARDS_PT_BERLIN = berlin.Execute()
+    pickle.dump(ARDS_PT_BERLIN, open('PKL/ARDS_PT.pkl', 'wb'))
 
 
-##### MAIN #####
+if __name__ == '__main__':
+    main()
 
-berlin = ARDS_Extract_Berlin()
-ARDS_PT_BERLIN = berlin.Execute()
-pickle.dump(ARDS_PT_BERLIN,open('PKL/ARDS_PT.pkl','wb'))
 
 
 

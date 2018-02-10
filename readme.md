@@ -49,8 +49,10 @@ Reduce *CHARTEVENT.csv* data by containing only subject id patient.
 
 
 
+
 ### Step 4. Collect variables 
 
+* Extract ARDS onset time
 * Extract **ventilator variables** around the event time up to the end of the event (weaning and death)
   * { PEEP, PP, Tidal volume, PIP, Respiratory rate, MInute ventilation } 
   * As we are focusing on initial ventilator setting, we are considering on 
