@@ -34,18 +34,26 @@ Inclusion criteria is following:
 #### Action
 
 1. Run *ARDS_Extract.py* to obtain *PKL/ARDS_PT.pkl*.
+2. Run *Subset_ARDS_MV.py* to obtain *PKL/ARDS_MV_SUBSET.pkl*.
 
 
 
-#### Step 3. Reduce ARDS patients with sufficient features.  
+
+### Step 3. Reduce ARDS patients with sufficient features.
+
+Reduce *CHARTEVENT.csv* data by containing only subject id patient. 
+
+#### Action
+
+1. Run *ReduceARDS_CHART.py* file 
+
+
+
+### Step 4. Collect variables 
 
 * Extract **ventilator variables** around the event time up to the end of the event (weaning and death)
-  * PEEP 
-  * PP 
-  * Tidal volume 
-  * PIP 
-  * Respiratory rate 
-  * MInute ventilation 
+  * { PEEP, PP, Tidal volume, PIP, Respiratory rate, MInute ventilation } 
+  * As we are focusing on initial ventilator setting, we are considering on 
 * Extract **biomarker variable** around the event time 
   * *SpO2*
   * *FiO2* 
