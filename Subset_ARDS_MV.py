@@ -36,18 +36,22 @@ class Subset_ARDS_MV(object):
     def Execute(self):
         ICUSTAY_IDs = np.unique(self.ventsettings['icustay_id'])
         ARDS_MV_SUBSET = []
+        ARDS_ICUID = []
         for icustay_id in ICUSTAY_IDs:
             if self.MV_identifier(icustay_id):
                 subject_id = self.Match_ICU_SUBJECT(icustay_id)
                 if self.ARDS_identifier(subject_id):
                     ARDS_MV_SUBSET.append(subject_id)
+                    ARDS_ICUID.append(icustay_id)
                 else:
                     continue
             else:
                 continue
-        return ARDS_MV_SUBSET
+        return ARDS_MV_SUBSET, ARDS_ICUID
 
 ##### MAIN #####
-subset = Subset_ARDS_MV()
-ARDS_MV_SUBSET = subset.Execute()
-pickle.dump(ARDS_MV_SUBSET,open('PKL/ARDS_MV_SUBSET.pkl','wb'))
+if __name__ == '__main__':
+    subset = Subset_ARDS_MV()
+    ARDS_MV_SUBSET, ARDS_ICUID = subset.Execute()
+    pickle.dump(ARDS_ICUID,open('PKL/ARDS_ICUID.pkl','wb'))
+    pickle.dump(ARDS_MV_SUBSET,open('PKL/ARDS_MV_SUBSET.pkl','wb'))

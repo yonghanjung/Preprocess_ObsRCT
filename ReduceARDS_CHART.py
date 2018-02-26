@@ -24,17 +24,18 @@ class ReduceARDS_CHART(object):
             else:
                 continue
 
-        self.CH_ARDS_raw = pd.concat(CH_ARDS)
-        self.CH_ARDS_reduced = self.CH_ARDS_raw[['SUBJECT_ID', 'ITEMID', 'CHARTTIME', 'VALUE']]
+        CH_ARDS_raw = pd.concat(CH_ARDS)
+        self.CH_ARDS_reduced = CH_ARDS_raw[['SUBJECT_ID','ICUSTAY_ID', 'ITEMID', 'CHARTTIME', 'VALUE']]
 
     def Dump_Pickle(self, X, X_name):
         pickle.dump(X, open(X_name, 'wb'))
 
     def Execute(self):
         self.Reduce_ARDS_PT()
-        self.Dump_Pickle(self.CH_ARDS_raw, 'PKL/CH_ARDS_raw.pkl')
+        # self.Dump_Pickle(self.CH_ARDS_raw, 'PKL/CH_ARDS_raw.pkl')
         self.Dump_Pickle(self.CH_ARDS_reduced, 'PKL/CH_ARDS_reduced.pkl')
 
 ''' Main '''
-reduceCH = ReduceARDS_CHART()
-reduceCH.Execute()
+if __name__ == '__main__':
+    reduceCH = ReduceARDS_CHART()
+    reduceCH.Execute()

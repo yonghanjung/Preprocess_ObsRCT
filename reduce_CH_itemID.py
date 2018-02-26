@@ -1,16 +1,10 @@
 import pandas as pd
 import numpy as np
-import scipy as sp
+import pickle
 
-class ItemIDSearch(object):
+class reduce_CH_itemID(object):
     def __init__(self):
-        pd.read_csv('OLD/raw_data/CHARTEVENTS.csv', chunksize=10 ** 6)
-        self.D_ITEM = pd.read_csv('OLD/raw_data/D_ITEMS.csv')
-
-    def FindItemID(self, item_name):
-        return self.D_ITEM[['ITEMID', 'LABEL']][(self.D_ITEM['LABEL'].str.contains("PEEP") == True)]
-
-    def ItemKey(self):
+        self.reduced_CH = pickle.load(open('PKL/CH_ARDS_reduced.pkl','rb'))
         self.key_VT = [639, 654, 681, 682, 683, 684, 224685, 224684, 224686]
         self.key_FiO2 = [190, 2981]
         self.key_PP = [543]
@@ -33,3 +27,5 @@ class ItemIDSearch(object):
         self.Bio_items = [self.key_PaO2, self.key_SpO2, self.HeartRate, self.ResRate]
         self.MV_items_name = ['VT', 'FiO2', 'PP', 'PEEP', 'PIP', 'MV']
         self.Bio_items_name = ['PaO2', 'SpO2', 'HeartRate', 'ResRate']
+
+

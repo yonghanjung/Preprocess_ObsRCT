@@ -14,6 +14,7 @@ By searching *reduced_CHARTEVENT* (denote *reduced_CH*), we can search patients 
 
 
 
+
 ### Step 2. Extract patients with ARDS 
 
 Inclusion criteria is following: 
@@ -35,41 +36,67 @@ Inclusion criteria is following:
 
 1. Run *ARDS_Extract.py* to obtain *PKL/ARDS_PT.pkl*.
 2. Run *Subset_ARDS_MV.py* to obtain *PKL/ARDS_MV_SUBSET.pkl*.
+3. Run ARDS_HADM_extractor.py to obtain *PKL/ARDS_ID.pkl*
 
 
 
 
 ### Step 3. Reduce ARDS patients with sufficient features.
 
-Reduce *CHARTEVENT.csv* data by containing only subject id patient. 
+Reduce *CHARTEVENT.csv* data by containing only ARDS patients (w.r.t subject id).
 
 #### Action
 
-1. Run *ReduceARDS_CHART.py* file 
+1. Run *ReduceARDS_CHART.py* file to generate *CH_ARDS_reduced.pkl*
 
+
+
+
+### Step 3-1. Reduce variables with itemID  
+
+* Extract ARDS onset time
+* Extract ARDS death time 
+* Extract **confounding variables**
+  - weight 
+  - gender 
+  - Age
+  - severity score (APACHE, SOFA, etc). See the [Link](https://github.com/MIT-LCP/mimic-code/tree/master/concepts/severityscores)
+* Collect all variables' item id 
+  * **vent:** { PEEP, PP, Tidal volume, PIP, Respiratory rate, MInute ventilation } 
+  * **O2_vital**: { *SpO2*, *FiO2* , *pH* , *PaO2*  }
+  * **vital:** { heartrate, bloodpressure, glucose, gcs score, temperature, creatine, lactate, potassium}
+  * **drug**: { Cisatracurium, Atorvastatin, Fluvastatin, Lovastatin, Pravastatin, Rosuvastatin, Simvastatin}
+* Reduce CH_ARDS database. 
+
+
+#### Action 
+
+1. Run *ARDS_reducer_ItemID.py* to generate *ARDS_reduced_CH.pkl* 
 
 
 
 ### Step 4. Collect variables 
 
-* Extract ARDS onset time
+* Extract ARDS confounders/ 
 * Extract **ventilator variables** around the event time up to the end of the event (weaning and death)
   * { PEEP, PP, Tidal volume, PIP, Respiratory rate, MInute ventilation } 
-  * As we are focusing on initial ventilator setting, we are considering on 
-* Extract **biomarker variable** around the event time 
-  * *SpO2*
-  * *FiO2* 
-  * *pH* 
-  * *PaO2*
-* Extract **confounding variables**
-  * weight 
-  * gender 
-  * Age
-  * severity score (APACHE, SOFA, etc). See the [Link](https://github.com/MIT-LCP/mimic-code/tree/master/concepts/severityscores)
+* Extract **biomarker variable** around the event time up to the end of the event (weaning and death)
 
 
 
 This output is called *Reduced_ARDS_PT.csv*
+
+
+
+#### Action
+
+1. To extract ARDS onset time, run *ARDS_onset.py*
+2. To extract ARDS death time, run *ARDS_death.py* 
+3. To extract ARDS confounder data (age, gender, weight, height, APACHE score, etc.,) run *ARDS_counfounders.py* 
+
+
+
+
 
 #### Step 3. Imputaiton of data
 
