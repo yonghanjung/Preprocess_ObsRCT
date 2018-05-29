@@ -14,7 +14,7 @@
       <file leaf-file-name="ARDS_vent.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ARDS_vent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
+            <state relative-caret-position="-810">
               <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
               <folding />
             </state>
@@ -24,8 +24,8 @@
       <file leaf-file-name="ARDS_firstday.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ARDS_firstday.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="22" column="18" lean-forward="false" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+            <state relative-caret-position="620">
+              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -33,21 +33,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ARDS_onset.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ARDS_onset.py">
+      <file leaf-file-name="Subset_ARDS_MV.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Subset_ARDS_MV.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="13" column="56" lean-forward="false" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="56" />
+            <state relative-caret-position="764">
+              <caret line="55" column="47" lean-forward="false" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="47" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ARDS_diagnoses.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ARDS_diagnoses.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ARDS_diagnoses.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="97" column="28" lean-forward="false" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
+            <state relative-caret-position="744">
+              <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -65,10 +65,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ARDS_Prescription.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ARDS_Prescription.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ARDS_Prescription.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-219">
+            <state relative-caret-position="353">
               <caret line="49" column="33" lean-forward="false" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -100,7 +100,7 @@
       <file leaf-file-name="ARDS_variable_collector.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ARDS_variable_collector.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="-4616">
               <caret line="13" column="42" lean-forward="false" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -113,7 +113,7 @@
         <entry file="file://$PROJECT_DIR$/ARDS_confounders.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2480">
-              <caret line="128" column="60" lean-forward="false" selection-start-line="128" selection-start-column="60" selection-end-line="128" selection-end-column="60" />
+              <caret line="128" column="0" lean-forward="false" selection-start-line="128" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -244,6 +244,16 @@
               <item name="Preprocess_ObsRCT" type="b2602c69:ProjectViewProjectNode" />
               <item name="Preprocess_ObsRCT" type="462c0819:PsiDirectoryNode" />
               <item name="PKL" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Preprocess_ObsRCT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Preprocess_ObsRCT" type="462c0819:PsiDirectoryNode" />
+              <item name="SQL" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Preprocess_ObsRCT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Preprocess_ObsRCT" type="462c0819:PsiDirectoryNode" />
+              <item name="SQL_ALT" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -659,13 +669,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Subset_ARDS_MV.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="40" column="27" lean-forward="true" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ARDS_Extract.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
@@ -709,26 +712,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ARDS_vent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ARDS_onset.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="13" column="56" lean-forward="false" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ARDS_confounders.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2480">
-          <caret line="128" column="60" lean-forward="false" selection-start-line="128" selection-start-column="60" selection-end-line="128" selection-end-column="60" />
           <folding />
         </state>
       </provider>
@@ -749,16 +736,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ARDS_variable_collector.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="13" column="42" lean-forward="false" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ReduceARDS_CHART.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="505">
@@ -767,10 +744,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ARDS_Prescription.py">
+    <entry file="file://$PROJECT_DIR$/ARDS_diagnoses.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-219">
-          <caret line="49" column="33" lean-forward="false" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
+        <state relative-caret-position="744">
+          <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -779,18 +756,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ARDS_firstday.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="22" column="18" lean-forward="false" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+        <state relative-caret-position="620">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ARDS_diagnoses.py">
+    <entry file="file://$PROJECT_DIR$/Subset_ARDS_MV.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="97" column="28" lean-forward="false" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
+        <state relative-caret-position="764">
+          <caret line="55" column="47" lean-forward="false" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ARDS_confounders.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2480">
+          <caret line="128" column="0" lean-forward="false" selection-start-line="128" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ARDS_vent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-810">
+          <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ARDS_variable_collector.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4616">
+          <caret line="13" column="42" lean-forward="false" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ARDS_Prescription.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="49" column="33" lean-forward="false" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
