@@ -33,41 +33,67 @@ class ARDS_diagnoses():
             subject_id = self.ARDS_ID['SUBJECT_ID'].iloc[idx]
             subject_hadm = self.ARDS_ID['HADM_ID'].iloc[idx]
             subject_DIAGNOSES = self.DIAGNOSES[(self.DIAGNOSES['SUBJECT_ID'] == subject_id) & (self.DIAGNOSES['HADM_ID'] == subject_hadm)]
-            subject_DIAGNOSES_ICD9 = list(subject_DIAGNOSES['ICD9_CODE'])
+            subject_DIAGNOSES_ICD9 = np.unique(list(subject_DIAGNOSES['ICD9_CODE']))
+
+
+            # Identify Pnuemonia
             for idx in range(len(subject_DIAGNOSES_ICD9)):
                 elem_icd9 = subject_DIAGNOSES_ICD9[idx]
                 try:
-                    # Identify Pnuemonia
                     if elem_icd9[:3] in self.Pneumonia_ICD9:
                         subject_Pneumonia = 1
+                        break
                     else:
                         subject_Pneumonia = 0
+                except:
+                    continue
 
-                    # Identify Aspiration_ICD9
+            # Identify Aspiration_ICD9
+            for idx in range(len(subject_DIAGNOSES_ICD9)):
+                elem_icd9 = subject_DIAGNOSES_ICD9[idx]
+                try:
                     if elem_icd9 in self.Aspiration_ICD9:
                         subject_Aspiration = 1
+                        break
                     else:
                         subject_Aspiration = 0
+                except:
+                    continue
 
-                    # Identify Sepsis
+
+            # Identify Sepsis
+            for idx in range(len(subject_DIAGNOSES_ICD9)):
+                elem_icd9 = subject_DIAGNOSES_ICD9[idx]
+                try:
                     if elem_icd9 in self.Sepsis_ICD9:
-                        subject_Sepsis= 1
+                        subject_Sepsis = 1
+                        break
                     else:
-                        subject_Sepsis = 0
+                        subject_Sepsis= 0
+                except:
+                    continue
 
-                    # Identify Severe Sepsis
+            # Identify Severe Sepsis
+            for idx in range(len(subject_DIAGNOSES_ICD9)):
+                elem_icd9 = subject_DIAGNOSES_ICD9[idx]
+                try:
                     if elem_icd9 in self.Severe_Sepsis_ICD9:
                         subject_Severe_Sepsis = 1
+                        break
                     else:
                         subject_Severe_Sepsis = 0
+                except:
+                    continue
 
-                    # Identify Septic Shock
+            # Identify Septic shock
+            for idx in range(len(subject_DIAGNOSES_ICD9)):
+                elem_icd9 = subject_DIAGNOSES_ICD9[idx]
+                try:
                     if elem_icd9 in self.Septic_Shock:
                         subject_Septic_shock = 1
+                        break
                     else:
                         subject_Septic_shock = 0
-
-
                 except:
                     continue
 
