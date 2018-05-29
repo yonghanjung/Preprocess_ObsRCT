@@ -46,6 +46,7 @@ class ARDS_Prescription():
         drug_dict['HADM_ID'] = list()
         drug_dict['ICUSTAY_ID'] = list()
         drug_dict['Cisatracurium'] = list()
+        # drug_dict['Atorvastatin'] = list()
         drug_dict['Simvastatin'] = list()
 
         for idx in range(len(self.ARDS_ID)):
