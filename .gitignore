@@ -7,6 +7,11 @@
 
 OLD/raw_data
 OLD/Preprocessed_result
+df_to_csv
+Firstday
+PKL
+SQL
+SQL_ALT
 
 __init__.py
 .idea
