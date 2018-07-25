@@ -113,6 +113,7 @@ class ARDS_Extract_Berlin(object):
                                  datetime.timedelta(days = self.window_days)
         chart_time = pd.to_datetime(subject_CH['CHARTTIME'])
         subject_ARDS_TF = False
+        berlin = 0
 
         for a_start, a_end in zip(subject_admittimes, subject_admittimes_end):
             # This mask is covering all the chartevent of subject
@@ -160,6 +161,8 @@ class ARDS_Extract_Berlin(object):
                             if self.hour_difference(ftime, ptime) > self.window_hour_p_f:
                                 continue
                             else:
+                                # subject_ARDS_TF = True
+                                # break
 
                                 # Among PaO2 value and FiO2 value within two hours,
                                 fio2 = subject_FiO2[f]
@@ -167,16 +170,28 @@ class ARDS_Extract_Berlin(object):
 
                                 # If Berlin score less than 300, then TRUE!
                                 berlin = pao2 / (fio2 + 1e-6)
-                                if berlin > 300:
-                                    continue
-                                else:
+                                if berlin < 300:
                                     subject_ARDS_TF = True
                                     break
+                        else:
+                            continue
+                        break
+                    else:
+                        continue
+                    break
 
-        return subject_ARDS_TF
+
+                                # if berlin > 300:
+                                #     continue
+                                # else:
+                                #     subject_ARDS_TF = True
+                                #     break
+
+        return subject_ARDS_TF, berlin
 
     def Execute(self):
         ARDS_PT = []
+        Berlin = []
         idx = 1
 
         for subject_id in self.SUBJECT_ID:
@@ -191,13 +206,14 @@ class ARDS_Extract_Berlin(object):
                 else:
                     subject_admittimes = self.Admittime_extract(subject_id)
                     subject_admittimes = self.Admittime_correction(subject_admittimes,subject_CH)
-                    subject_ards = self.ARDS_marker_in_Window(subject_admittimes,subject_CH)
+                    subject_ards,berlin = self.ARDS_marker_in_Window(subject_admittimes,subject_CH)
 
                     if subject_ards == False:
                         continue
                     else:
                         ARDS_PT.append(subject_id)
-        return ARDS_PT
+                        Berlin.append(berlin)
+        return ARDS_PT, Berlin
 
 class MV_PT(object):
     def __init__(self, ARDS_PT_BERLIN):
@@ -210,8 +226,8 @@ class MV_PT(object):
 
 def main():
     berlin = ARDS_Extract_Berlin()
-    ARDS_PT_BERLIN = berlin.Execute()
-    pickle.dump(ARDS_PT_BERLIN, open('PKL/ARDS_PT.pkl', 'wb'))
+    ARDS_PT_BERLIN,Berlin = berlin.Execute()
+    # pickle.dump(ARDS_PT_BERLIN, open('PKL/ARDS_PT.pkl', 'wb'))
 
 
 if __name__ == '__main__':
